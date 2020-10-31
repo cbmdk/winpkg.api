@@ -15,7 +15,7 @@ namespace winstall.core
     public class WinPkg
     {
         public DateTime DateCreated { get; set; } = DateTime.Now;
-        public string  Id { get; set; }
+        //public string  Id { get; set; }
         public string  Version { get; set; }
         public string  Name { get; set; }
         public string Publisher { get; set; }
@@ -58,7 +58,9 @@ namespace winstall.core
             var mongo = new MongoClient("mongodb://localhost:27017/");
             var db = mongo.GetDatabase("winstall");
 
-            string[] allfiles = Directory.GetFiles(@"E:\winstall.api\winget-pkgs\manifests", "*.yaml", SearchOption.AllDirectories);
+            //string[] allfiles = Directory.GetFiles(@"E:\winstall.api\winget-pkgs\manifests", "*.yaml", SearchOption.AllDirectories);
+            string[] allfiles = Directory.GetFiles(@"C:\code\packages\manifests", "*.yaml", SearchOption.AllDirectories);
+
 
             // get a collection of MyHelloWorldMongoThings (and create if it doesn't exist)
             // Using an empty filter so that everything is considered in the filter.
