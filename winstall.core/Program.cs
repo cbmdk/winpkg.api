@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Security.Principal;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using YamlDotNet.RepresentationModel;
@@ -15,7 +16,9 @@ namespace winstall.core
     public class WinPkg
     {
         public DateTime DateCreated { get; set; } = DateTime.Now;
-        //public string  Id { get; set; }
+
+        [JsonPropertyName("Id")]
+        public string  Pub { get; set; }
         public string  Version { get; set; }
         public string  Name { get; set; }
         public string Publisher { get; set; }
