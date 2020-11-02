@@ -15,36 +15,18 @@ namespace winstall.core
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("What would you like to enter for MyDatas?");
-            //// Get some input from user
-            //var myDatas = Console.ReadLine();
-            //// Create an object with the data that was entered
-            //var obj = new MyHelloWorldMongoThing()
-            //{
-            //    MyDatas = myDatas
-            //};
-
             var mongo = new MongoClient("mongodb://localhost:27017/");
             var db = mongo.GetDatabase("winstall");
 
             //string[] allfiles = Directory.GetFiles(@"E:\winstall.api\winget-pkgs\manifests", "*.yaml", SearchOption.AllDirectories);
             string[] allfiles = Directory.GetFiles(@"C:\code\packages\manifests", "*.yaml", SearchOption.AllDirectories);
-            //string[] allfiles = Directory.GetFiles(@"C:\code\winget - pkgs\manifests", "*.yaml", SearchOption.AllDirectories);
-
-
-
-            // get a collection of MyHelloWorldMongoThings (and create if it doesn't exist)
-            // Using an empty filter so that everything is considered in the filter.
             var collection = db.GetCollection<WinPkg>("packages");
 
             var test = db.ListCollections();
-            // Count the items in the collection prior to insert
             var count = collection.CountDocuments(new FilterDefinitionBuilder<WinPkg>().Empty);
             Console.WriteLine($"Number of items in the collection after insert: {count}");
-            // Add the entered item to the collection
             
             collection.InsertMany(GetAllPackagesData(allfiles));
-            // Count the items in the collection post insert
             count = collection.CountDocuments(new FilterDefinitionBuilder<WinPkg>().Empty);
             Console.WriteLine($"Number of items in the collection after insert: {count}");
         }
@@ -58,25 +40,13 @@ namespace winstall.core
                 {
                     var deserializer = new Deserializer();
                     var yamlObj = deserializer.Deserialize(reader);
-
                     var serializer = new SerializerBuilder().JsonCompatible().Build();
                     var json = serializer.Serialize(yamlObj);
-
                     var data = JsonSerializer.Deserialize<WinPkg>(json);
-
-                    
-                    
-
                     dataList.Add(data);
-
                 }
             }
-
             return dataList;
-
         }
-        
-
-
     }
 }
