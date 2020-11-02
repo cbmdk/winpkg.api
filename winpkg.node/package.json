@@ -14,7 +14,8 @@
   "dependencies": {
     "graphql-yoga": "^1.18.3",
     "mongoose": "^5.10.11",
-    "js-yaml":"^3.14.0"
+    "js-yaml":"^3.14.0",
+    "glob": "^7.1.6"
    
   }
 }
