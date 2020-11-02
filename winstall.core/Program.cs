@@ -16,7 +16,7 @@ namespace winstall.core
     public class WinPkg
     {
         public DateTime DateCreated { get; set; } = DateTime.Now;
-
+        public string PackageId { get; set; } = Guid.NewGuid().ToString();
         [JsonPropertyName("Id")]
         public string  Pub { get; set; }
         public string  Version { get; set; }
@@ -63,6 +63,8 @@ namespace winstall.core
 
             //string[] allfiles = Directory.GetFiles(@"E:\winstall.api\winget-pkgs\manifests", "*.yaml", SearchOption.AllDirectories);
             string[] allfiles = Directory.GetFiles(@"C:\code\packages\manifests", "*.yaml", SearchOption.AllDirectories);
+            //string[] allfiles = Directory.GetFiles(@"C:\code\winget - pkgs\manifests", "*.yaml", SearchOption.AllDirectories);
+
 
 
             // get a collection of MyHelloWorldMongoThings (and create if it doesn't exist)
