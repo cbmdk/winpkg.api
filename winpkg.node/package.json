@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "yarn install && node index.js",
+    "pkg": "yarn install && node pkg2mongo.js"
+
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "graphql-yoga": "^1.18.3",
-    "mongoose": "^5.10.11"
+    "mongoose": "^5.10.11",
+    "node-read-yaml-files": "^1.0.1"
   }
 }
